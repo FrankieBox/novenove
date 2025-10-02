@@ -1,22 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>HTML</title>
-  
-  <!-- HTML -->
-  
-
-  <!-- Custom Styles -->
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Teste de Códigos</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <p>Nothing to see here...</p>
-  <!-- Project -->
-  <script src="main.js"></script>
+    <div class="login-container">
+        <h1>Acesso Exclusivo</h1>
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="username">Usuário (E-mail):</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Entrar</button>
+            <p id="message" class="error-message"></p>
+        </form>
+        <p class="no-signup">
+            *Sem opção de cadastro. Assinatura vendida separadamente.
+        </p>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
