@@ -5,9 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const messageDisplay = document.getElementById('message');
 
     // 1. Definição das credenciais FIXAS para TESTE
-    // CREDENCIAIS DO ADMINISTRADOR
-    const ADMIN_USER = "novenove@laboratorio"; // Usuário do Administrador
-    const ADMIN_PASS = "627424";               // Senha do Administrador
+    // NOVAS CREDENCIAIS DO ADMINISTRADOR
+    const ADMIN_USER = "laboratorio";       // Usuário do Administrador
+    const ADMIN_PASS = "contrail123";       // Senha do Administrador
     
     // Credenciais do Usuário Comum (mantidas)
     const TEST_USER = "teste@exemplo.com";   
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             messageDisplay.textContent = 'Login ADM realizado com sucesso! Redirecionando para o painel...';
             messageDisplay.classList.add('success-message');
             
-            // REDIRECIONAMENTO: Envia para a página principal do painel
+            // REDIRECIONAMENTO ADM: Envia para a página principal do painel
             setTimeout(() => {
                 window.location.href = "admin-dashboard.html"; 
             }, 1500);
@@ -41,10 +41,9 @@ document.addEventListener('DOMContentLoaded', () => {
             messageDisplay.textContent = 'Login realizado com sucesso! Redirecionando para o conteúdo...';
             messageDisplay.classList.add('success-message');
             
-            // Simulação de redirecionamento para a página de conteúdo normal
+            // Redirecionamento para a página de conteúdo do assinante
             setTimeout(() => {
-                // Você deve criar o arquivo "conteudo-assinante.html" para usar este redirecionamento
-                console.log("Usuário comum logado!");
+                window.location.href = "conteudo-assinante.html";
             }, 1500);
             
         // **C. Falha na autenticação**
