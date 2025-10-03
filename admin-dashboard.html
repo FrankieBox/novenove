@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard ADM - Novenove</title>
+    <link rel="stylesheet" href="admin-style.css"> 
+</head>
+<body>
+
+    <header class="dashboard-header">
+        <h1>Painel Administrativo</h1>
+        <button id="logoutBtn" class="logout-btn">Sair</button>
+    </header>
+
+    <div class="dashboard-container">
+        
+        <nav class="sidebar">
+            <h2>Gerenciamento</h2>
+            
+            <button id="btnCadastrarUsuario" data-page="cadastrar-usuario.html">
+                <i class="icon-user-add"></i> Cadastrar Novo Usuário
+            </button>
+            <button id="btnEditarUsuario" data-page="editar-usuario.html">
+                <i class="icon-user-edit"></i> Editar Campos de Usuário
+            </button>
+            <button id="btnPesquisarUsuario" data-page="pesquisar-usuario.html">
+                <i class="icon-search"></i> Pesquisar Usuário (CPF/Tel)
+            </button>
+            <button id="btnUsuariosAtivos" data-page="usuarios-ativos.html">
+                <i class="icon-active"></i> Ver Usuários Ativos
+            </button>
+
+            <hr>
+
+            <button id="btnCadastrarProduto" data-page="cadastrar-produto.html">
+                <i class="icon-product-add"></i> Cadastrar Produtos
+            </button>
+
+            <hr>
+
+            <button id="btnRelatorios" data-page="relatorios.html">
+                <i class="icon-report"></i> Relatórios
+            </button>
+        </nav>
+
+        <main class="content-area">
+            <h2>Bem-vindo(a), Administrador(a)!</h2>
+            <p>Use o menu lateral para gerenciar usuários, produtos e visualizar relatórios do sistema.</p>
+            
+            <div id="dynamicContent">
+                <p>Navegue pelos botões para começar.</p>
+            </div>
+        </main>
+
+    </div>
+
+    <script src="admin-script.js"></script>
+    <script>
+        // Lógica de Redirecionamento (Temporária)
+        // Você precisará atualizar o script.js para que o login redirecione para esta página
+    </script>
+</body>
+</html>

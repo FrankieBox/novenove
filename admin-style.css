@@ -1,0 +1,30 @@
+document.addEventListener('DOMContentLoaded', () => {
+    
+    const sidebarButtons = document.querySelectorAll('.sidebar button');
+    const logoutBtn = document.getElementById('logoutBtn');
+    
+    // 1. Configurar Redirecionamento dos Botões
+    // O atributo 'data-page' em cada botão (ver HTML) contém o nome do arquivo HTML.
+    sidebarButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetPage = button.getAttribute('data-page');
+            
+            if (targetPage) {
+                // Ao clicar, o navegador é direcionado para a página específica.
+                // Ex: "cadastrar-usuario.html"
+                window.location.href = targetPage;
+            }
+        });
+    });
+
+    // 2. Funcionalidade do Botão Sair
+    logoutBtn.addEventListener('click', () => {
+        // Em um sistema real, aqui você faria:
+        // 1. Limpar tokens de sessão (se estivesse usando).
+        // 2. Redirecionar para a tela de login.
+        
+        alert("Saindo do Painel Administrativo...");
+        window.location.href = 'index.html'; // Volta para a tela de login
+    });
+    
+});
