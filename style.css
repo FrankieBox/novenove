@@ -1,20 +1,22 @@
+/* Configuração básica para garantir que o corpo ocupe 100% da tela */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
+    background-color: #f4f4f9; /* Fundo cinza claro */
     display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    min-height: 100vh; /* Garante que ocupe a altura total da viewport */
     margin: 0;
 }
 
+/* Estilo do container principal do formulário */
 .login-container {
     background-color: #ffffff;
     padding: 40px;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
     width: 100%;
-    max-width: 380px;
+    max-width: 380px; /* Largura máxima para visualização desktop/mobile */
     text-align: center;
 }
 
@@ -26,7 +28,7 @@ h1 {
 
 .input-group {
     margin-bottom: 20px;
-    text-align: left;
+    text-align: left; /* Alinha labels à esquerda */
 }
 
 label {
@@ -36,25 +38,27 @@ label {
     color: #555;
 }
 
+/* Estilo para os campos de texto e senha */
 input[type="text"],
 input[type="password"] {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box;
-    /* Garante que o padding não aumente o tamanho total */
+    box-sizing: border-box; /* Garante que o padding não aumente o tamanho total */
 }
 
+/* Estilo do botão de login */
 button {
     width: 100%;
     padding: 12px;
-    background-color: #007bff;
+    background-color: #007bff; /* Azul primário */
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 1em;
+    font-weight: bold;
     transition: background-color 0.3s;
 }
 
@@ -62,14 +66,15 @@ button:hover {
     background-color: #0056b3;
 }
 
+/* Mensagens de erro e sucesso */
 .error-message {
-    color: #e74c3c;
+    color: #e74c3c; /* Vermelho para erro */
     margin-top: 15px;
     font-weight: bold;
 }
 
 .success-message {
-    color: #2ecc71;
+    color: #2ecc71; /* Verde para sucesso */
     margin-top: 15px;
     font-weight: bold;
 }
