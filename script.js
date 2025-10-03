@@ -6,12 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 1. Definição das credenciais FIXAS para TESTE
     // NOVAS CREDENCIAIS DO ADMINISTRADOR
-    const ADMIN_USER = "laboratorio";       // Usuário do Administrador
-    const ADMIN_PASS = "contrail123";       // Senha do Administrador
+    const ADMIN_USER = "admin";           // Usuário do Administrador
+    const ADMIN_PASS = "99";              // Senha do Administrador
     
-    // Credenciais do Usuário Comum (mantidas)
-    const TEST_USER = "teste@exemplo.com";   
-    const TEST_PASS = "123456";              
+    // NOVAS CREDENCIAIS DO USUÁRIO COMUM
+    const TEST_USER = "user";             // Usuário Comum
+    const TEST_PASS = "11";               // Senha Comum
 
     loginForm.addEventListener('submit', (event) => {
         event.preventDefault();
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             messageDisplay.textContent = 'Login ADM realizado com sucesso! Redirecionando para o painel...';
             messageDisplay.classList.add('success-message');
             
-            // REDIRECIONAMENTO ADM: Envia para a página principal do painel
+            // REDIRECIONAMENTO ADM
             setTimeout(() => {
                 window.location.href = "admin-dashboard.html"; 
             }, 1500);
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
             messageDisplay.textContent = 'Login realizado com sucesso! Redirecionando para o conteúdo...';
             messageDisplay.classList.add('success-message');
             
-            // Redirecionamento para a página de conteúdo do assinante
+            // REDIRECIONAMENTO COMUM
             setTimeout(() => {
                 window.location.href = "conteudo-assinante.html";
             }, 1500);
