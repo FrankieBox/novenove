@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardião das Velas | Velas na Umbanda: Conexão e Significado</title>
+    <style>
+        /* Cores de Tranca Ruas das Almas: Preto, Vermelho, Cinza/Branco */
+        :root {
+            --cor-principal: #1a1a1a; 
+            --cor-secundaria: #8b0000; 
+            --cor-acento: #e0e0e0; 
+            --cor-fundo-card-escuro: #2c2c2c; 
+            --cor-texto-claro: #f4f4f9;
+            --cor-texto-escuro: #333; 
+            --cor-destaque-vermelho: #CC0000; 
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--cor-principal);
+            color: var(--cor-texto-claro);
+            line-height: 1.6;
+            text-align: justify; 
+        }
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            margin: 20px auto;
+            background: var(--cor-principal);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--cor-secundaria);
+        }
+
+        /* NOVO: Estilo para o Logotipo */
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--cor-acento);
+        }
+
+        .logo {
+            max-width: 250px; /* Tamanho máximo razoável para mobile e desktop */
+            height: auto;
+            border-radius: 50%; /* Opcional: para dar um leve destaque circular */
+            box-shadow: 0 0 15px rgba(204, 0, 0, 0.5); /* Sombra vermelha de destaque */
+        }
+        
+        h1 { /* Mantido para título interno */
+            color: var(--cor-secundaria);
+            text-align: center;
+            font-size: 1.8em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: none; /* Escondido, pois usamos a imagem, mas pode ser útil para acessibilidade/SEO se necessário */
+        }
+
+        h2 {
+            color: var(--cor-acento);
+            font-size: 1.4em;
+            margin-top: 30px;
+            padding-left: 10px;
+            border-left: 4px solid var(--cor-secundaria);
+            text-align: left; 
+        }
+
+        hr {
+            border-color: var(--cor-secundaria);
+            margin: 20px 0;
+        }
+
+        .search-container {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: var(--cor-fundo-card-escuro);
+            border-radius: 10px;
+            border: 1px solid var(--cor-secundaria);
+            display: flex;
+            flex-direction: column; 
+            gap: 15px;
+        }
+
+        label {
+            color: var(--cor-acento);
+            font-weight: bold;
+        }
+
+        select {
+            padding: 12px;
+            border: 1px solid var(--cor-secundaria);
+            border-radius: 6px;
+            font-size: 1em;
+            background-color: var(--cor-principal);
+            color: var(--cor-texto-claro);
+            appearance: none; 
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M7 10l5 5 5-5z" fill="%23e0e0e0"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px top 50%;
+            background-size: 16px;
+            flex-grow: 1;
+        }
+
+        button {
+            padding: 12px;
+            background-color: var(--cor-secundaria);
+            color: var(--cor-texto-claro);
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+
+        button:hover {
+            background-color: #a00000;
+        }
+
+        /* --- Estilos da Consulta (Resultado) --- */
+        #result {
+            margin-top: 25px;
+            padding: 20px;
+            border: 1px solid var(--cor-secundaria);
+            border-radius: 10px;
+            background-color: white; 
+            color: black; 
+            text-align: left;
+        }
+
+        #result h2 {
+            color: black;
+            border-left-color: var(--cor-destaque-vermelho);
+        }
+
+        .orixa-info {
+            line-height: 1.5;
+            padding-top: 10px;
+        }
+
+        .orixa-info p {
+            font-weight: bold; 
+        }
+
+        .orixa-info p strong {
+            color: black; 
+        }
+        
+        .resposta-destaque {
+            color: var(--cor-destaque-vermelho); 
+            font-weight: bold;
+            display: inline-flex; 
+            align-items: center;
+        }
+        
+        /* Indicador de Cor Sólida (Retângulo) */
+        .cor-solida {
+            display: inline-block;
+            width: 18px; 
+            height: 18px;
+            border-radius: 4px; 
+            margin-left: 8px;
+            border: 1px solid #333; 
+            vertical-align: middle;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Estilo para a cor Dourada (Textura com sua imagem) */
+        .cor-solida.dourado {
+            background-image: url('https://static.vecteezy.com/ti/vetor-gratis/t2/9827838-onda-dourado-abstrato-fundo-ilustracaoial-gratis-vetor.jpg');
+            background-size: cover; 
+            background-position: center;
+        }
+
+        /* Tratamento para Obaluaiê (Branco e Preto) */
+        .cor-solida.bicolor {
+            width: 38px; 
+            background: linear-gradient(to right, #FFFFFF 50%, #000000 50%) !important;
+            border: 1px solid #333;
+        }
+        /* ------------------------------------- */
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+            padding-left: 1.5em;
+            position: relative;
+        }
+
+        ul li::before {
+            content: '🕯️'; 
+            position: absolute;
+            left: 0;
+            color: var(--cor-secundaria);
+        }
+
+        /* Responsividade */
+        @media (min-width: 600px) {
+            .search-container {
+                flex-direction: row;
+                align-items: center;
+            }
+            button {
+                width: 150px; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="logo-container">
+            <img src="https://raw.githubusercontent.com/FrankieBox/novenove/refs/heads/main/logo.jpg" alt="Guardião das Velas - Distribuidor de Velas" class="logo">
+        </div>
+        
+        <h1>O Fogo Sagrado na Umbanda</h1>
+        <p>A vela é um elemento central, atuando como um poderoso canal de **conexão** e **manifestação** entre os planos. O fogo sagrado simboliza a vida, a força e a luz que dissipa as trevas. Na Umbanda, este instrumento materializa a **fé**, concentra a **intenção** e estabelece a comunicação direta com os Orixás e Guias de Luz.</p>
+
+        <h2>O Sentido da Chama:</h2>
+        <ul>
+            <li>Serve como **ponte energética** e foco para a **comunicação** com Orixás e Entidades.</li>
+            <li>Materializa a **Luz Divina** e a **presença espiritual** em nosso campo de força.</li>
+            <li>Reforça a **intenção** mental e a **fé** através da energia ígnea (*Axé*).</li>
+            <li>Um ato de **proteção** e **devoção** que auxilia na transformação da realidade.</li>
+        </ul>
+
+        <hr>
+
+        <h2>Consulte a Vibração de Cada Orixá</h2>
+        <div class="search-container">
+            <label for="orixa-select">Selecione o Orixá:</label>
+            <select id="orixa-select">
+                <option value="">-- Selecione um Orixá --</option>
+            </select>
+            <button onclick="buscarOrixa()">Consultar Cor</button>
+        </div>
+
+        <div id="result">
+            <p style="font-weight: bold;">Selecione um Orixá no menu acima e clique em "Consultar Cor" para ver a cor da vela e o significado vibracional associado.</p>
+        </div>
+
+    </div>
+
+    <script>
+        const orixas = [
+            { nome: "Oxalá", cor: "Branco", significado: "Paz, Fé, Espiritualidade, Criação. O Trono da Lei Maior." },
+            { nome: "Ogum", cor: "Vermelho ou Azul Royal", significado: "Força, Lei, Determinação, Proteção. O Senhor dos caminhos e da ordem." },
+            { nome: "Oxóssi", cor: "Verde", significado: "Conhecimento, Cura, Natureza, Caça, Prosperidade. O Rei das Matas." },
+            { nome: "Xangô", cor: "Marrom, Vermelho ou Laranja", significado: "Justiça, Equilíbrio, Sabedoria, Poder. O Senhor do Trovão." },
+            { nome: "Iemanjá", cor: "Azul Claro ou Branco", significado: "Geração, Maternidade, Harmonia, Águas do Mar. A Mãe Universal." },
+            { nome: "Oxum", cor: "Amarelo ou Dourado", significado: "Amor, Prosperidade, Fertilidade, Águas Doces. A Rainha da Beleza." },
+            { nome: "Iansã", cor: "Amarelo, Laranja ou Rosa", significado: "Transformação, Ventos, Liderança, Movimento. A Senhora das Tempestades." },
+            { nome: "Obaluaiê", cor: "Branco e Preto", significado: "Evolução, Saúde, Cura de doenças, Transmutação. O Senhor das Passagens e da Terra." },
+            { nome: "Nanã Buruquê", cor: "Roxo", significado: "Evolução, Transmutação, Sabedoria dos anciãos. A Anciã das águas. (Lilás ou Violeta em algumas linhas)." }
+        ];
+
+        function preencherSelect() {
+            const select = document.getElementById('orixa-select');
+            orixas.forEach((orixa, index) => {
+                const option = document.createElement('option');
+                option.value = index; 
+                option.textContent = orixa.nome;
+                select.appendChild(option);
+            });
+        }
+
+        function obterCorHex(corNome) {
+            corNome = corNome.trim().toLowerCase();
+            switch (corNome) {
+                case 'branco': return '#FFFFFF'; 
+                case 'vermelho': return '#FF0000';
+                case 'verde': return '#008000';
+                case 'marrom': return '#8B4513';
+                case 'azul royal': return '#4169E1';
+                case 'azul claro': return '#ADD8E6';
+                case 'amarelo': 
+                case 'dourado': return 'is_gold'; 
+                case 'laranja': return '#FFA500';
+                case 'roxo': 
+                case 'violeta': 
+                case 'lilás': return '#9370DB';
+                case 'rosa': return '#FF69B4';
+                case 'preto': return '#000000';
+                default: return 'transparent';
+            }
+        }
+        
+        function criarIndicadorDeCor(orixa) {
+            const corTexto = orixa.cor;
+
+            // 1. Tratamento especial para Obaluaiê (Branco e Preto)
+            if (corTexto.includes('Branco') && corTexto.includes('Preto') && orixa.nome === 'Obaluaiê') {
+                return `<span class="cor-solida bicolor"></span>`;
+            }
+
+            // 2. Processamento para cores múltiplas ou únicas
+            const coresProcessadas = corTexto
+                .split(/ou|,/g)
+                .map(c => c.trim().toLowerCase())
+                .filter(c => c.length > 0)
+                .map(obterCorHex)
+                .filter((hex, index, self) => self.indexOf(hex) === index);
+            
+            let html = '';
+
+            coresProcessadas.forEach(corHex => {
+                if (corHex === 'is_gold') {
+                    // Aplica a classe dourado para usar a imagem de fundo
+                    html += `<span class="cor-solida dourado"></span>`;
+                } else {
+                    // Aplica a cor de fundo simples
+                    html += `<span class="cor-solida" style="background-color: ${corHex};"></span>`;
+                }
+            });
+
+            return html;
+        }
+
+        function buscarOrixa() {
+            const select = document.getElementById('orixa-select');
+            const selectedIndex = select.value;
+            const resultDiv = document.getElementById('result');
+
+            if (selectedIndex === "") {
+                resultDiv.innerHTML = '<p class="resposta-destaque">Por favor, selecione um Orixá na lista para consultar.</p>';
+                return;
+            }
+
+            const orixa = orixas[selectedIndex];
+
+            const indicadoresCor = criarIndicadorDeCor(orixa);
+            const corTextoFormatado = orixa.cor.replace(/\(([^)]+)\)/g, '').trim(); 
+            
+            let htmlContent = '<h2>Resultado da Consulta:</h2>';
+            
+            htmlContent += `
+                <div class="orixa-info">
+                    <p><strong>Orixá:</strong> <span class="resposta-destaque">${orixa.nome}</span></p>
+                    <p>
+                        <strong>Cor da Vela:</strong> 
+                        <span class="resposta-destaque-cor">
+                            <span class="resposta-destaque">${corTextoFormatado}</span>
+                            ${indicadoresCor}
+                        </span>
+                    </p>
+                    <p><strong>Vibração Principal:</strong> <span class="resposta-destaque">${orixa.significado}</span></p>
+                </div>
+            `;
+
+            resultDiv.innerHTML = htmlContent;
+        }
+
+        document.addEventListener('DOMContentLoaded', preencherSelect);
+    </script>
+
+</body>
+</html>
